@@ -29,19 +29,19 @@ var sum = function(array) {
 // 3. Sum all numbers in an array containing nested arrays.
 // arraySum([1,[2,3],[[4]],5]); // 15
 var arraySum = function(array) {
-    // if (array.length < 1) {
-    //   return 0; 
-    // } else if (array.length === 1) {
-    //   return array[0];     
-    // // let resultSum = array[0]; 
-    // // for (let i = 0; i < array.length; i ++) {
-    // //     resultSum += array[i]; 
-    // //     for (let j = 0; j < array[i].length; j++) {
-    // //         resultSum += array[i][j]; 
-    // //     }; 
-    // // }; 
-    // // return resultSum; 
-    // }; 
+  if (array.length === 0) {
+      return 0;
+  }
+  let totalSum = 0; 
+  let flattened = []; 
+  for (let i = 0; i < array.length; i++) {
+    if (Array.isArray(array[i]) === true) {
+      flattened = flattened.concat(arraySum(array[i])); 
+    } else {
+      totalSum += array[i]; 
+    }
+  }
+  return totalSum; 
 };
 
 // 4. Check if a number is even.
